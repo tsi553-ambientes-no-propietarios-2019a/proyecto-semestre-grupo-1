@@ -31,6 +31,12 @@ class Estacion
      */
     private $imagen;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usr", inversedBy="estacion")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $usr;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +74,18 @@ class Estacion
     public function setImagen($imagen): self
     {
         $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    public function getUsr(): ?Usr
+    {
+        return $this->usr;
+    }
+
+    public function setUsr(?Usr $usr): self
+    {
+        $this->usr = $usr;
 
         return $this;
     }

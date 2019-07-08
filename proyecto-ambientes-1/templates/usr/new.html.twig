@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Usr{% endblock %}
+
+{% block body %}
+    <h1>Create new Usr</h1>
+
+    {{ include('usr/_form.html.twig') }}
+
+    <a href="{{ path('usr_index') }}">back to list</a>
+{% endblock %}

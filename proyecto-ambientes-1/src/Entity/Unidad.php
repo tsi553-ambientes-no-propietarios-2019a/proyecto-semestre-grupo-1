@@ -31,6 +31,12 @@ class Unidad
      */
     private $ruta;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Usr", inversedBy="unidad")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $usr;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +74,18 @@ class Unidad
     public function setRuta(string $ruta): self
     {
         $this->ruta = $ruta;
+
+        return $this;
+    }
+
+    public function getUsr(): ?Usr
+    {
+        return $this->usr;
+    }
+
+    public function setUsr(?Usr $usr): self
+    {
+        $this->usr = $usr;
 
         return $this;
     }
