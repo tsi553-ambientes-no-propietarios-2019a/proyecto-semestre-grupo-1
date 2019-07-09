@@ -1,20 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EstadoController!{% endblock %}
+{% block title %}Estado index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Estado index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idestado</th>
+                <th>Estado</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for estado in estados %}
+            <tr>
+                <td>{{ estado.id }}</td>
+                <td>{{ estado.idestado }}</td>
+                <td>{{ estado.estado }}</td>
+                <td>
+                    <a href="{{ path('estado_show', {'id': estado.id}) }}">show</a>
+                    <a href="{{ path('estado_edit', {'id': estado.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/ubuntu/proyecto-semestre-grupo-1/proyecto-ambientes-1/src/Controller/EstadoController.php'|file_link(0) }}">src/Controller/EstadoController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/ubuntu/proyecto-semestre-grupo-1/proyecto-ambientes-1/templates/estado/index.html.twig'|file_link(0) }}">templates/estado/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('estado_new') }}">Create new</a>
 {% endblock %}

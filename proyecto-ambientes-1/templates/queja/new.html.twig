@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Queja{% endblock %}
+
+{% block body %}
+    <h1>Create new Queja</h1>
+
+    {{ include('queja/_form.html.twig') }}
+
+    <a href="{{ path('queja_index') }}">back to list</a>
+{% endblock %}

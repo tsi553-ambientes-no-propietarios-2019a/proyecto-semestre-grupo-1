@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Queja{% endblock %}
+
+{% block body %}
+    <h1>Edit Queja</h1>
+
+    {{ include('queja/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('queja_index') }}">back to list</a>
+
+    {{ include('queja/_delete_form.html.twig') }}
+{% endblock %}
