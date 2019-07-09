@@ -43,6 +43,12 @@ class Queja
      */
     private $estado;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Unidad", inversedBy="quejas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $uni;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -104,6 +110,18 @@ class Queja
     public function setEstado(?Estado $estado): self
     {
         $this->estado = $estado;
+
+        return $this;
+    }
+
+    public function getUni(): ?Unidad
+    {
+        return $this->uni;
+    }
+
+    public function setUni(?Unidad $uni): self
+    {
+        $this->uni = $uni;
 
         return $this;
     }
