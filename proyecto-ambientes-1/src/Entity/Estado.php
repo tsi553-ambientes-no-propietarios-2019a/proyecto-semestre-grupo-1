@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -25,6 +27,16 @@ class Estado
      * @ORM\Column(type="string", length=255)
      */
     private $estado;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Queja", mappedBy="estado")
+     */
+    private $que;
+
+    public function __construct()
+    {
+        $this->que = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -51,6 +63,37 @@ class Estado
     public function setEstado(string $estado): self
     {
         $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Queja[]
+     */
+    public function getQue(): Collection
+    {
+        return $this->que;
+    }
+
+    public function addQue(Queja $que): self
+    {
+        if (!$this->que->contains($que)) {
+            $this->que[] = $que;
+            $que->setEstado($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQue(Queja $que): self
+    {
+        if ($this->que->contains($que)) {
+            $this->que->removeElement($que);
+            // set the owning side to null (unless already changed)
+            if ($que->getEstado() === $this) {
+                $que->setEstado(null);
+            }
+        }
 
         return $this;
     }
