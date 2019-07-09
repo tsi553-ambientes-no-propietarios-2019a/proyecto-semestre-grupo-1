@@ -31,6 +31,12 @@ class Queja
      */
     private $fechahora;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Estacion", inversedBy="quejas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $est;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +74,18 @@ class Queja
     public function setFechahora(\DateTimeInterface $fechahora): self
     {
         $this->fechahora = $fechahora;
+
+        return $this;
+    }
+
+    public function getEst(): ?Estacion
+    {
+        return $this->est;
+    }
+
+    public function setEst(?Estacion $est): self
+    {
+        $this->est = $est;
 
         return $this;
     }

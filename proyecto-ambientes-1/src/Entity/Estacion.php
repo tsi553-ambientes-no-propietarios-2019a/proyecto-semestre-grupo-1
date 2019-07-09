@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Estacion
      * @ORM\JoinColumn(nullable=false)
      */
     private $usr;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Queja", mappedBy="est")
+     */
+    private $quejas;
+
+    public function __construct()
+    {
+        $this->quejas = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,37 @@ class Estacion
     public function setUsr(?Usr $usr): self
     {
         $this->usr = $usr;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Queja[]
+     */
+    public function getQuejas(): Collection
+    {
+        return $this->quejas;
+    }
+
+    public function addQueja(Queja $queja): self
+    {
+        if (!$this->quejas->contains($queja)) {
+            $this->quejas[] = $queja;
+            $queja->setEst($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQueja(Queja $queja): self
+    {
+        if ($this->quejas->contains($queja)) {
+            $this->quejas->removeElement($queja);
+            // set the owning side to null (unless already changed)
+            if ($queja->getEst() === $this) {
+                $queja->setEst(null);
+            }
+        }
 
         return $this;
     }
