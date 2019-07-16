@@ -28,5 +28,4 @@ class CityType extends AbstractType
             'data_class' => City::class,
         ]);
     }
-    
 }

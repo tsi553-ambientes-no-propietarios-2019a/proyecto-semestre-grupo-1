@@ -2,27 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Complain;
+use App\Entity\Usr;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ComplainType extends AbstractType
+class UsrType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id_com')
-            ->add('type')
-            ->add('timestamp')
-            ->add('status')
+            ->add('ci_usr')
+            ->add('name_usr')
+            ->add('email_usr')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Complain::class,
+            'data_class' => Usr::class,
         ]);
     }
 }

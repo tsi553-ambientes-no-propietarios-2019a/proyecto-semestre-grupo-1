@@ -48,12 +48,9 @@ class City
     {
         return $this->name;
     }
-    
 
     public function setName(string $name): self
-    {{
-        return (string) $this->getContact();
-    }
+    {
         $this->name = $name;
 
         return $this;
@@ -62,6 +59,13 @@ class City
     public function getCountry(): ?Country
     {
         return $this->country;
+    }
+
+    public function setCountry(?Country $country): self
+    {
+        $this->country = $country;
+
+        return $this;
     }
 
     /**
@@ -95,8 +99,7 @@ class City
         return $this;
     }
 
-    public function __toString()
-    {
-        return (string) $this->name;
+    public function __ToString(){
+    	return (string) $this->name;
     }
 }

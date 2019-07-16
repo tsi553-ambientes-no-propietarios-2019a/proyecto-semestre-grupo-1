@@ -34,24 +34,15 @@ class User extends BaseUser
     private $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity="App\Entity\Complain", mappedBy="id_admin")
      */
-    private $ci_usr;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $email_usr;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name_usr;
+    private $complains;
 
     public function __construct()
     {
         parent::__construct();
         $this->roles = array('ROLE_USER');
+        $this->complains = new ArrayCollection();
     }
 
     public function getName(): ?string
@@ -78,38 +69,33 @@ class User extends BaseUser
         return $this;
     }
 
-    public function getCiUsr(): ?int
+    /**
+     * @return Collection|Complain[]
+     */
+    public function getComplains(): Collection
     {
-        return $this->ci_usr;
+        return $this->complains;
     }
 
-    public function setCiUsr(int $ci_usr): self
+    public function addComplain(Complain $complain): self
     {
-        $this->ci_usr = $ci_usr;
+        if (!$this->complains->contains($complain)) {
+            $this->complains[] = $complain;
+            $complain->setIdAdmin($this);
+        }
 
         return $this;
     }
 
-    public function getEmailUsr(): ?string
+    public function removeComplain(Complain $complain): self
     {
-        return $this->email_usr;
-    }
-
-    public function setEmailUsr(string $email_usr): self
-    {
-        $this->email_usr = $email_usr;
-
-        return $this;
-    }
-
-    public function getNameUsr(): ?string
-    {
-        return $this->name_usr;
-    }
-
-    public function setNameUsr(string $name_usr): self
-    {
-        $this->name_usr = $name_usr;
+        if ($this->complains->contains($complain)) {
+            $this->complains->removeElement($complain);
+            // set the owning side to null (unless already changed)
+            if ($complain->getIdAdmin() === $this) {
+                $complain->setIdAdmin(null);
+            }
+        }
 
         return $this;
     }

@@ -15,6 +15,7 @@ class UnitType extends AbstractType
             ->add('number_uni')
             ->add('type_uni')
             ->add('route')
+            ->add('complain')
         ;
     }
 

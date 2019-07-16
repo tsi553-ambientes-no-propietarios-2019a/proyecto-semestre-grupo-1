@@ -31,6 +31,16 @@ class Unit
      */
     private $route;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Complain", inversedBy="number_uni")
+     */
+    private $complain;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Station", inversedBy="units")
+     */
+    private $id_sta;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +78,30 @@ class Unit
     public function setRoute(string $route): self
     {
         $this->route = $route;
+
+        return $this;
+    }
+
+    public function getComplain(): ?Complain
+    {
+        return $this->complain;
+    }
+
+    public function setComplain(?Complain $complain): self
+    {
+        $this->complain = $complain;
+
+        return $this;
+    }
+
+    public function getIdSta(): ?Station
+    {
+        return $this->id_sta;
+    }
+
+    public function setIdSta(?Station $id_sta): self
+    {
+        $this->id_sta = $id_sta;
 
         return $this;
     }

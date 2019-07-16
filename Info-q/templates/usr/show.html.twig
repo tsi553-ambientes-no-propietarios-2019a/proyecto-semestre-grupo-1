@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usr{% endblock %}
+
+{% block body %}
+    <h1>Usr</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ usr.id }}</td>
+            </tr>
+            <tr>
+                <th>Ci_usr</th>
+                <td>{{ usr.ciUsr }}</td>
+            </tr>
+            <tr>
+                <th>Name_usr</th>
+                <td>{{ usr.nameUsr }}</td>
+            </tr>
+            <tr>
+                <th>Email_usr</th>
+                <td>{{ usr.emailUsr }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('usr_index') }}">back to list</a>
+
+    <a href="{{ path('usr_edit', {'id': usr.id}) }}">edit</a>
+
+    {{ include('usr/_delete_form.html.twig') }}
+{% endblock %}
