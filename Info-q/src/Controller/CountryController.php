@@ -109,7 +109,7 @@ class CountryController extends AbstractController
 
         $country_id = $request->request->get('country_id');
         $cities = $em->getRepository(City::class)->findByCountry($country_id);
-
+dump(cities);die;
         return new JsonResponse($cities);
     }
 }

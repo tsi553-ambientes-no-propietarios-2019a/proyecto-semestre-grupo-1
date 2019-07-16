@@ -29,7 +29,7 @@ class AddCityFieldListener implements EventSubscriberInterface {
                     ->setParameter('country', $country_id)
                 ;
             },
-           // 'choice_label' => 'name'
+            'choice_label' => 'name'
         );
 
         $form->add('city', EntityType::class, $formOptions);

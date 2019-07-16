@@ -8,69 +8,34 @@
         {% endblock %}
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="">Info-q</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-normal">Info-q</h5>
+  
+  {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+  <div style="margin-right: 5px">
+  <a class="btn btn-outline-primary" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}
+  </a>
+  </div>
+  <div>
+<a class="btn btn-outline-primary" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}
+</a>
+</div>
+{% else %}
+<nav class="my-2 my-md-0 mr-md-3">
+     {% if not is_granted("ROLE_SUPER_ADMIN") %}
+    <a class="p-2 text-dark" href="{{ path('country_index') }}">Features</a>
+    <a class="p-2 text-dark" href="#">Enterprise</a>
+    <a class="p-2 text-dark" href="#">Support</a>
+    <a class="p-2 text-dark" href="#">Pricing</a>
 
-                    {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-             
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('fos_user_profile_show') }}">
-                                {{ 'profile.show.view'|trans({}, 'FOSUserBundle') }}
-                            </a>
-                        </li>
+{% endif %}    
+  </nav>
+{% endif %}
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('product_index') }}">
-                                Productos
-                            </a>
-                        </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('category_index') }}">
-                                Categorias
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('supplier_index') }}">
-                                Proveedores
-                            </a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
-                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                            </a>
-                        </li>
-                    {% endif %}
-                </ul>
-
-                   
-                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                    
-                        <a class="nav-link" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
-                    
-                
-            </div>
-        </nav>
+</div>
         <div class="container">
             {% block body %}{% endblock %}
         </div>

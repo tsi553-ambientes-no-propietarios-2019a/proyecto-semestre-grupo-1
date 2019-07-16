@@ -99,7 +99,7 @@ class City
         return $this;
     }
 
-    public function __ToString(){
-    	return (string) $this->name;
-    }
+   // public function __ToString(){
+    //	return (string) $this->name;
+    //}
 }
