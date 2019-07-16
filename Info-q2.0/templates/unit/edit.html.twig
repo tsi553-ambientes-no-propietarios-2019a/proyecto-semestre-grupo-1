@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Unit{% endblock %}
+
+{% block body %}
+    <h1>Edit Unit</h1>
+
+    {{ include('unit/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('unit_index') }}">back to list</a>
+
+    {{ include('unit/_delete_form.html.twig') }}
+{% endblock %}

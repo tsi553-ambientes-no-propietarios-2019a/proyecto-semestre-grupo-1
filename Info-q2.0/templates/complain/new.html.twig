@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Complain{% endblock %}
+
+{% block body %}
+    <h1>Create new Complain</h1>
+
+    {{ include('complain/_form.html.twig') }}
+
+    <a href="{{ path('complain_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,12 @@
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: App\Entity\User
+    from_email:
+        address: "bryanGuerrerospp@gmail.com"
+        sender_name: "InfoQ"
+    registration:
+        confirmation:
+            enabled: true
+        form:
+            type: App\Form\RegistrationType

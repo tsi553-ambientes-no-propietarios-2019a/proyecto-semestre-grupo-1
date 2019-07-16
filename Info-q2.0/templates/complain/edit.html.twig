@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Complain{% endblock %}
+
+{% block body %}
+    <h1>Edit Complain</h1>
+
+    {{ include('complain/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('complain_index') }}">back to list</a>
+
+    {{ include('complain/_delete_form.html.twig') }}
+{% endblock %}
