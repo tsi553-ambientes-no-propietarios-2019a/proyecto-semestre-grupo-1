@@ -5,45 +5,114 @@
         <title>{% block title %}Info-q{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+            <link rel="stylesheet" href="{{ asset('fonts/icomoon/style.css')}}">
+
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+            <link rel="stylesheet" href="{{ asset('css/jquery-ui.css')}}">
+            <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css')}}">
+            <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')}}">
+            <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css')}}">
+
+            <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css')}}">
+
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css')}}">
+
+            <link rel="stylesheet" href="{{ asset('fonts/flaticon/font/flaticon.css')}}">
+
+            <link rel="stylesheet" href="{{ asset('css/aos.css')}}">
+
+            <link rel="stylesheet" href="{{ asset('css/style.css')}}">
         {% endblock %}
     </head>
     <body>
-        
-
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal">Info-q</h5>
-  
-  {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-  <div style="margin-right: 5px">
-  <a class="btn btn-outline-primary" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}
-  </a>
-  </div>
-  <div>
-<a class="btn btn-outline-primary" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}
-</a>
-</div>
-{% else %}
-<nav class="my-2 my-md-0 mr-md-3">
-     {% if not is_granted("ROLE_SUPER_ADMIN") %}
-    <a class="p-2 text-dark" href="{{ path('country_index') }}">Features</a>
-    <a class="p-2 text-dark" href="#">Enterprise</a>
-    <a class="p-2 text-dark" href="#">Support</a>
-    <a class="p-2 text-dark" href="#">Pricing</a>
-
-{% endif %}    
-  </nav>
-{% endif %}
-
-
-</div>
-        <div class="container">
-            {% block body %}{% endblock %}
+    <div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="site-logo mr-auto w-25"><a href="{{ path('homepage') }}" >
+                <img src="{{ asset('images/info-q.png') }}" width="100" height="100" class="d-inline-block align-top" alt="Logo"></a>
         </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav mx-auto text-center">
 
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-        {% block javascripts %}{% endblock %}
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">rutas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">estaciones</a>
+                </li><li class="nav-item">
+                    <a class="nav-link" href="#">contactos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">sobre nosotros</a>
+                </li>
+
+            </div>
+            <div class="ml-auto">
+
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('fos_user_profile_show') }}">
+                                    {{ 'profile.show.view'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
+                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    </div>
+
+    <div class="container-fluid">
+        {% block body %}{% endblock %}
+    </div>
+
+
+
+
+
+
+
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    {% block javascripts %}{% endblock %}
     </body>
 </html>

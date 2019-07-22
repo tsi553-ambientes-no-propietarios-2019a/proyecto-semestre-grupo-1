@@ -5,20 +5,71 @@
 {% block body %}
 
 
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-        <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="..." class="d-block w-100" alt="...">
+<header>
+
+
+  <div class="bd-example">
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ asset('images/hero_1.jpg') }}" class="d-block w-100" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm" style="padding-top: 150px">
+                  <h1>Learn From The Expert</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime ipsa nulla sed quis rerum amet natus quas necessitatibus.</p>
+                  <p><a href="#" class="btn btn-primary py-3 px-5 btn-pill">Admission Now</a></p>
+
+                </div>
+
+                <div class="col-sm">
+                  <form action="" method="post" class="form-box">
+                    <h3 class="h4 text-black mb-4">Queja al instante</h3>
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Email Addresss">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div><div class="form-group">
+                      <input type="password" class="form-control" placeholder="Password">
+                    </div>
+                    <div class="form-group mb-4">
+                      <input type="password" class="form-control" placeholder="Re-type Password">
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+
+
+
+</header>
+
+
+
+
+
 
 
 
 {% endblock %}
+
