@@ -4,10 +4,24 @@
 
 {% block body %}
     <header>
-
-        <h1>Sobre nosotros</h1>
-
+    
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+       
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-300" src="{{ asset('images/about.jpg') }}" alt="First slide" width="1300px" height="500px">
+            <div class="container">
+              <div class="carousel-caption text-left">
+                <h1><strong>Sistema Integrado de Quejas</strong></h1>
+                <p><strong>Se pretende tener un control detallado de las diferentes unidades de transporte público brindando una atención inmediata a través de la observación ciudadana para comprender al usuario, mejorando no solo las unidades sino el sistema de transporte público de la capital del Ecuador.</strong></p>
+              </div>
+            </div>
+          </div>
+    
     </header>
+
+
+    </body>
 
 
 {% endblock %}
