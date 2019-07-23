@@ -1,6 +1,44 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+
+
+
+
+<div class="container" style="padding-top: 10px">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row no-gutters">
+                    <div class="col-md-4" style="padding-top: 25px">
+                        <img src="{{ asset('images/empleado.png') }}" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><div class="fos_user_user_show">
+                                    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+                                    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+                                </div></h5>
+                            <p class="card-text">este es tu perfil de usuario si deseas añadir una imagen hazlo!!</p>
+                            <p class="card-text"><small class="text-muted"><div>
+                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                                            <a href="{{ path('fos_user_security_logout') }}">
+                                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                            </a>
+                                        {% else %}
+
+                                        {% endif %}
+                                    </div></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+        </div>
+    </div>
+
 </div>
