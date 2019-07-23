@@ -77,7 +77,7 @@
                             </li>
                         {% else %}
                             <li class="nav-item">
-
+                                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
                                 <a class="nav-link" href="{{ path('fos_user_profile_show') }}">
                                     <img src="{{ asset('images/usuarios.png') }}">
                                     {{ 'profile.show.view'|trans({}, 'FOSUserBundle') }}
