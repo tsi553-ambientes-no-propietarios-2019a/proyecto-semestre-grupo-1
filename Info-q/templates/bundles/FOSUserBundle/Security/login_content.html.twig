@@ -1,27 +1,50 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-    {% endif %}
-    <a href="{{ path('fos_user_resetting_request') }}">{{ 'layout.forgot_password'|trans }}</a>
 
-    <div class="formgroup">
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+
+<div class="container" style="padding-top: 10px">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-4">
+            <div class="card" style="width: 20rem; border: none">
+                <img src="{{ asset('images/equipo.png') }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    {% if error %}
+                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
+                        {% if csrf_token %}
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        {% endif %}
+
+
+                        <div class="formgroup">
+                            <label for="username">{{ 'security.login.username'|trans }}</label>
+                            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+                        </div>
+
+                        <div class="formgroup">
+                            <label for="password">{{ 'security.login.password'|trans }}</label>
+                            <input class="form-control" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" />
+                            <label class="custom-control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        </div>
+                        <input class="btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                        <a href="{{ path('fos_user_resetting_request') }}">{{ 'layout.forgot_password'|trans }}</a>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <div class="col">
+        </div>
     </div>
 
-    <div class="formgroup">
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input class="form-control" type="password" id="password" name="_password" required="required" autocomplete="current-password" />
-    </div>
-    <div class="custom-control custom-checkbox">
-    <input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" />
-    <label class="custom-control-label" for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-    </div>
-    <input class="btn btn-success" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
+</div>
+
+

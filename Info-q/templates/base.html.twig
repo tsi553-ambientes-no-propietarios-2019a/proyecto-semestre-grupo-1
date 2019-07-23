@@ -27,7 +27,7 @@
     </head>
     <body>
     <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="site-logo mr-auto w-25"><a href="{{ path('homepage') }}" >
                 <img src="{{ asset('images/info-q.png') }}" width="100" height="100" class="d-inline-block align-top" alt="Logo"></a>
         </div>
@@ -35,22 +35,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="navbar-nav mx-auto text-center">
+            <div class="navbar-nav mx-auto text-center" style="size: A3">
 
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ path('homepage') }}">Inicio <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">rutas</a>
+                    <a class="nav-link" href="{{ path('routebus_index') }}">rutas</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">estaciones</a>
+                    <a class="nav-link" href="{{ path('stationbus_index') }}">estaciones</a>
                 </li><li class="nav-item">
-                    <a class="nav-link" href="#">contactos</a>
+                    <a class="nav-link" href="{{ path('contactbus_index') }}">contactos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">sobre nosotros</a>
+                    <a class="nav-link" href="{{ path('aboutbus_index') }}">sobre nosotros</a>
                 </li>
 
             </div>
@@ -61,14 +61,25 @@
                     <ul class="navbar-nav mr-auto">
                         {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                                <a class="nav-link" href="{{ path('fos_user_security_login') }}">
+                                    <button type="button" class="btn btn-primary">
+                                        {{ 'layout.login'|trans({}, 'FOSUserBundle') }}</button>
+
+                                </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans({}, 'FOSUserBundle') }}</a>
+                                <a class="nav-link" href="{{ path('fos_user_registration_register') }}">
+                                    <button type="button" class="btn btn-success">
+                                        {{ 'layout.register'|trans({}, 'FOSUserBundle') }}
+                                    </button>
+
+                                </a>
                             </li>
                         {% else %}
                             <li class="nav-item">
+
                                 <a class="nav-link" href="{{ path('fos_user_profile_show') }}">
+                                    <img src="{{ asset('images/usuarios.png') }}">
                                     {{ 'profile.show.view'|trans({}, 'FOSUserBundle') }}
                                 </a>
                             </li>
@@ -78,7 +89,7 @@
                                     Dropdown
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="{{ path('city_index') }}">Ciudad</a>
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="#">Something else here</a>
@@ -86,7 +97,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('fos_user_security_logout') }}">
-                                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                                    <button type="button" class="btn btn-primary">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</button>
                                 </a>
                             </li>
                         {% endif %}

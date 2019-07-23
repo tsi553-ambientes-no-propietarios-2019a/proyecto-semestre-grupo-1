@@ -1,10 +1,38 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_row(form.name) }}
-    {{ form_widget(form) }}
 
-    <div style="padding-top:20px">
-        <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+
+
+
+<div class="row">
+    <div class="col-sm-6" style="padding-top: 100px">
+        <div class="card" style="border: none;">
+            <div class="text-center">
+                <img src="{{ asset('images/informacion.png') }}" class="rounded" alt="...">
+            </div>
+
+            <div class="card-body">
+                <h5 class="card-title">Registro</h5>
+                <p class="card-text">Recuerda registrarte si deseas obtener mayor informacion.</p>
+
+            </div>
+        </div>
     </div>
-{{ form_end(form) }}
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                {{ form_row(form.name) }}
+                {{ form_widget(form) }}
+
+                <div style="padding-top:20px">
+                    <input type="submit" class="btn btn-primary" value="{{ 'registration.submit'|trans }}" />
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
