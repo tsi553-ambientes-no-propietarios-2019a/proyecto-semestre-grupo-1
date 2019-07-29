@@ -110,8 +110,8 @@ class Downloader
                 }
             }
 
-            // FIXME: getNames() can return n names
-            $name = str_replace('/', ',', $package->getNames()[0]);
+            // FIXME: Multi name with getNames()
+            $name = str_replace('/', ',', $package->getName());
             $path = sprintf('%s,%s%s', $name, $o, $version);
             if ($date = $package->getReleaseDate()) {
                 $path .= ','.$date->format('U');
@@ -161,7 +161,7 @@ class Downloader
      */
     public function get(string $path, array $headers = [], $cache = true): Response
     {
-        if (!$this->enabled) {
+        if (!$this->enabled && '/versions.json' !== $path) {
             return new Response([]);
         }
         $headers[] = 'Package-Session: '.$this->sess;
